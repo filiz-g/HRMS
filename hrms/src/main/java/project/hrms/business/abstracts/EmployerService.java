@@ -3,12 +3,10 @@ package project.hrms.business.abstracts;
 import java.util.List;
 
 import project.hrms.core.utilities.results.DataResult;
-import project.hrms.entities.concretes.JobTitle;
+import project.hrms.entities.concretes.Employer;
 
-public interface JobTitleService {
+public interface EmployerService {
 	
-	DataResult<List<JobTitle>> getAll();
-	
-	
+	DataResult<List<Employer>> getAll();
 
 }

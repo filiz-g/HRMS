@@ -7,25 +7,24 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import project.hrms.business.abstracts.JobTitleService;
+import project.hrms.business.abstracts.EmployerService;
 import project.hrms.core.utilities.results.DataResult;
-import project.hrms.entities.concretes.JobTitle;
+import project.hrms.entities.concretes.Employer;
 
 @RestController
-@RequestMapping("/api/job-titles")
-public class JobTitlesController {
-	
-	private JobTitleService jobTitleService;
+@RequestMapping("/api/employers")
+public class EmployersController {
+
+	private EmployerService employerService;
 
 	@Autowired
-	public JobTitlesController(JobTitleService jobTitleService) {
+	public EmployersController(EmployerService employerService) {
 		super();
-		this.jobTitleService = jobTitleService;
+		this.employerService = employerService;
 	}
 	
 	@GetMapping("/getall")
-	public DataResult<List<JobTitle>> getAll(){
-		return this.jobTitleService.getAll();
+	public DataResult<List<Employer>> getAll(){
+		return this.employerService.getAll();
 	}
-
 }
