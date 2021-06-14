@@ -3,10 +3,11 @@
 Spring Boot ile HRMS isimli proje oluşturuldu.
 Katmanlar oluşturuldu.
 Sistemde bulunan genel iş pozisyonlarını listeleyecek Api yazıldı.
-
 Sisteme Swagger desteği getirildi.
+
 ------------------------------------------------------------------------------------------------------------------
-# ÖNEMLİ : Doğrulama işlemleri için sahte servisler oluşturunuz. Örneğin, gerçekten mail göndermeniz gerekmez.
+# ÖNEMLİ :
+Doğrulama işlemleri için sahte servisler oluşturunuz. Örneğin, gerçekten mail göndermeniz gerekmez.
 
 # Req 1 : İş Arayanlar sisteme kayıt olabilmelidir.
 
