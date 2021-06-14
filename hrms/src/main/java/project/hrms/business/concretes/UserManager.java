@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import project.hrms.business.abstracts.UserService;
 import project.hrms.core.utilities.results.DataResult;
+import project.hrms.core.utilities.results.Result;
 import project.hrms.core.utilities.results.SuccessDataResult;
+import project.hrms.core.utilities.results.SuccessResult;
 import project.hrms.dataAccess.abstracts.UserDao;
 import project.hrms.entities.concretes.User;
 
@@ -28,4 +30,10 @@ public class UserManager implements UserService{
 		return new SuccessDataResult<List<User>>(this.userDao.findAll(),"Data listelendi.");
 	}
 
-}
+	@Override
+	public Result add(User user) {
+		this.userDao.save(user);
+		return new SuccessResult("Kullanıcı başarılı bir şekilde eklendi.");
+	}	}
+
+

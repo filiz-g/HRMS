@@ -4,11 +4,14 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.hrms.business.abstracts.CandidateService;
 import project.hrms.core.utilities.results.DataResult;
+import project.hrms.core.utilities.results.Result;
 import project.hrms.entities.concretes.Candidate;
 	
 	@RestController
@@ -26,6 +29,12 @@ import project.hrms.entities.concretes.Candidate;
 		@GetMapping("/getall")
 		public DataResult<List<Candidate>> getAll(){
 			return this.candidateService.getAll();
+		}
+		
+		@PostMapping("/add")
+		public Result add(@RequestBody Candidate candidate) {
+			return this.candidateService.add(candidate);
+			
 		}
 
 }
