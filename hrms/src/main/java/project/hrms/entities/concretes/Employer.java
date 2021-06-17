@@ -1,10 +1,10 @@
 package project.hrms.entities.concretes;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -13,10 +13,7 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Employer extends User {
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private int id;
+
 	
 	@Column(name="company_name")
 	private String companyName;
@@ -27,23 +24,26 @@ public class Employer extends User {
 	@Column(name="phone_number")
 	private String phoneNumber;
 	
+	@Column(name = "is_verified")
+	private boolean isVerified ;
+	
+	@OneToMany(mappedBy = "employer")
+	private List<JobAdvertisement> jobAdvertisements;
+
+	
 	public Employer() {}
 
-	public Employer(int id, String companyName, String webAddres, String phoneNumber) {
+	
+	public Employer(String companyName, String webAddres, String phoneNumber, boolean isVerified,
+			List<JobAdvertisement> jobAdvertisements) {
 		super();
-		this.id = id;
 		this.companyName = companyName;
 		this.webAddres = webAddres;
 		this.phoneNumber = phoneNumber;
+		this.isVerified = isVerified;
+		this.jobAdvertisements = jobAdvertisements;
 	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 	public String getCompanyName() {
 		return companyName;
@@ -67,6 +67,22 @@ public class Employer extends User {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public boolean isVerified() {
+		return isVerified;
+	}
+
+	public void setVerified(boolean isVerified) {
+		this.isVerified = isVerified;
+	}
+
+	public List<JobAdvertisement> getJobAdvertisements() {
+		return jobAdvertisements;
+	}
+
+	public void setJobAdvertisements(List<JobAdvertisement> jobAdvertisements) {
+		this.jobAdvertisements = jobAdvertisements;
 	}
 
 }

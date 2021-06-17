@@ -26,7 +26,7 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
     
     private boolean CheckIfNullField(JobAdvertisement jobAdvertisement) {
-		if (jobAdvertisement.getJobTitle() != null && jobAdvertisement.getDescription() != null && jobAdvertisement.getCity() != null && jobAdvertisement.getOpenTitleCount() != 0) {
+		if (jobAdvertisement.getJobTitle() != null && jobAdvertisement.getDescription() != null && jobAdvertisement.getCity() != null && jobAdvertisement.getOpenPositionCount() != 0) {
 			return true;
 		}
 		return false;

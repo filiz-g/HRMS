@@ -1,11 +1,9 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -15,10 +13,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
     
-	@Id
-	@GeneratedValue
-	@Column(name="id")
-	private int id;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -30,17 +24,16 @@ public class Candidate extends User {
 	private String nationalityId;
 	
 	@Column(name="date_of_birth")
-	private Date dateOfBirth;
+	private LocalDate dateOfBirth;
 	
 	@Column(name="is_verified")
 	private boolean isVerified;
 
 	
 
-	public Candidate(int id, String firstName, String lastName, String nationalityId, Date dateOfBirth,
+	public Candidate(String firstName, String lastName, String nationalityId, LocalDate dateOfBirth,
 			boolean isVerified) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.nationalityId = nationalityId;
@@ -48,17 +41,6 @@ public class Candidate extends User {
 		this.isVerified = isVerified;
 	}
 
-
-
-	public int getId() {
-		return id;
-	}
-
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
 
 
 
@@ -98,13 +80,13 @@ public class Candidate extends User {
 
 
 
-	public Date getDateOfBirth() {
+	public LocalDate getDateOfBirth() {
 		return dateOfBirth;
 	}
 
 
 
-	public void setDateOfBirth(Date dateOfBirth) {
+	public void setDateOfBirth(LocalDate dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
 	}
 

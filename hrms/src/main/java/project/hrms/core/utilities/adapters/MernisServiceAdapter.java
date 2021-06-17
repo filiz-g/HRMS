@@ -1,20 +1,20 @@
 package project.hrms.core.utilities.adapters;
 
-
+import java.time.LocalDate;
 
 import org.springframework.stereotype.Service;
 
 import project.hrms.mernisService.FakeMernisService;
 
 @Service
-public class MernisServiceAdapter implements UserCheckService {
+public class MernisServiceAdapter implements UserCheckService{
 
 	@Override
-	public boolean checkIfRealPerson(String nationalityId, String firstName, String lastName, int birthOfYear) {
+	public boolean checkIfRealPerson(long nationalityId, String firstName, String lastName, LocalDate dateOfBirth) {
         
 		FakeMernisService client= new FakeMernisService();
 		
-		boolean result = client.TCKimlikDogrula(nationalityId, firstName, lastName, birthOfYear);
+		boolean result = client.TCKimlikDogrula(nationalityId,firstName,lastName,dateOfBirth);
 		
 
 		return result;

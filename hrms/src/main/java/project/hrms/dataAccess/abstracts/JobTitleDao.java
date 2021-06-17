@@ -6,4 +6,5 @@ import project.hrms.entities.concretes.JobTitle;
 
 public interface JobTitleDao extends JpaRepository<JobTitle,Integer>{
 
+	JobTitle findByJobTitle(String title);
 }

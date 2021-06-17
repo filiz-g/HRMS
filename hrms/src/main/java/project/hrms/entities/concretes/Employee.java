@@ -2,8 +2,6 @@ package project.hrms.entities.concretes;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
@@ -12,10 +10,6 @@ import javax.persistence.Table;
 @PrimaryKeyJoinColumn(name="user_id")
 public class Employee extends User{
 	
-	@Id
-	@GeneratedValue
-	@Column(name="id")
-	private int id;
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -25,19 +19,10 @@ public class Employee extends User{
 	
 	public Employee() {}
 
-	public Employee(int id, String firstName, String lastName) {
+	public Employee(String firstName, String lastName) {
 		super();
-		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {

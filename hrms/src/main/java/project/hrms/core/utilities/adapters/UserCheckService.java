@@ -1,8 +1,10 @@
 package project.hrms.core.utilities.adapters;
 
+import java.time.LocalDate;
+
 
 public interface UserCheckService {
 	
-	boolean checkIfRealPerson(String nationalityId, String firstName, String lastName,int birthOfYear);
+        boolean checkIfRealPerson(long nationalityId, String firstName, String lastName,LocalDate dateOfBirth);
 
 }

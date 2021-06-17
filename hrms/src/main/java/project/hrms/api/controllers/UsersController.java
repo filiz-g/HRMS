@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import project.hrms.business.abstracts.UserService;
 import project.hrms.core.utilities.results.DataResult;
 import project.hrms.core.utilities.results.Result;
-import project.hrms.entities.concretes.Employer;
 import project.hrms.entities.concretes.User;
 
 @RestController

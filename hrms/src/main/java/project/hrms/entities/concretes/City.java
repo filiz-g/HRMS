@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+
 @Entity
 @Table(name = "cities")
 public class City {
@@ -30,7 +31,6 @@ public class City {
 	private List<JobAdvertisement> jobAdvertisements;
 
 	public City() {}
-	
 	public City(int id, Date createdDate, String name, List<JobAdvertisement> jobAdvertisements) {
 		super();
 		this.id = id;
@@ -70,5 +70,7 @@ public class City {
 	public void setJobAdvertisements(List<JobAdvertisement> jobAdvertisements) {
 		this.jobAdvertisements = jobAdvertisements;
 	}
+
+	
 	
 }

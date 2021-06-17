@@ -1,17 +1,17 @@
 package project.hrms.entities.dtos;
 
-import java.time.LocalDate;
+import java.sql.Date;
 
 public class JobAdvertisementDto {
 	
 	private String title;
 	private String companyName;
 	private int openPositionCount;
-	private LocalDate createdDate;
-	private LocalDate deadline;
+	private Date createdDate;
+	private Date deadline;
 	
-	public JobAdvertisementDto(String title, String companyName, int openPositionCount, LocalDate createdDate,
-			LocalDate deadline) {
+	public JobAdvertisementDto(String title, String companyName, int openPositionCount,Date createdDate,
+		Date deadline) {
 		super();
 		this.title = title;
 		this.companyName = companyName;
@@ -44,19 +44,19 @@ public class JobAdvertisementDto {
 		this.openPositionCount = openPositionCount;
 	}
 
-	public LocalDate getCreatedDate() {
+	public Date getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(LocalDate createdDate) {
+	public void setCreatedDate(Date createdDate) {
 		this.createdDate = createdDate;
 	}
 
-	public LocalDate getDeadline() {
+	public Date getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(LocalDate deadline) {
+	public void setDeadline(Date deadline) {
 		this.deadline = deadline;
 	}
 

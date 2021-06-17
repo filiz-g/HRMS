@@ -1,6 +1,6 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,7 +22,7 @@ public class JobAdvertisement {
 	private int id;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="is_active")
 	private boolean isActive;
@@ -30,11 +30,11 @@ public class JobAdvertisement {
 	@Column(name="description")
 	private String description;
 	
-	@Column(name="open_title_count")
-	private int openTitleCount;
+	@Column(name="open_positon_count")
+	private int openPositionCount;
 	
 	@Column(name="deadline")
-	private Date deadline;
+	private LocalDate deadline;
 	
 	@Column(name="is_open")
 	private boolean isOpen;
@@ -46,7 +46,7 @@ public class JobAdvertisement {
 	private int salaryMax;
 	
 	@Column(name="published_at")
-	private Date publishedAt;
+	private LocalDate publishedAt;
 	
 	@ManyToOne
 	@JoinColumn(name = "employer_id")
@@ -65,15 +65,15 @@ public class JobAdvertisement {
 
 	public JobAdvertisement() {}
 	
-	public JobAdvertisement(int id, Date createdDate, boolean isActive, String description, int openTitleCount,
-			Date deadline, boolean isOpen, int salaryMin, int salaryMax, Date publishedAt, Employer employer, City city,
+	public JobAdvertisement(int id, LocalDate createdDate, boolean isActive, String description, int openPositionCount,
+			LocalDate deadline, boolean isOpen, int salaryMin, int salaryMax, LocalDate publishedAt, Employer employer, City city,
 			JobTitle jobTitle, JobAdvertConfirm jobAdvertConfirm) {
 		super();
 		this.id = id;
 		this.createdDate = createdDate;
 		this.isActive = isActive;
 		this.description = description;
-		this.openTitleCount = openTitleCount;
+		this.openPositionCount = openPositionCount;
 		this.deadline = deadline;
 		this.isOpen = isOpen;
 		this.salaryMin = salaryMin;
@@ -93,11 +93,11 @@ public class JobAdvertisement {
 		this.id = id;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
@@ -117,19 +117,19 @@ public class JobAdvertisement {
 		this.description = description;
 	}
 
-	public int getOpenTitleCount() {
-		return openTitleCount;
+	public int getOpenPositionCount() {
+		return openPositionCount;
 	}
 
-	public void setOpenTitleCount(int openTitleCount) {
-		this.openTitleCount = openTitleCount;
+	public void setOpenPositionCount(int openPositionCount) {
+		this.openPositionCount = openPositionCount;
 	}
 
-	public Date getDeadline() {
+	public LocalDate getDeadline() {
 		return deadline;
 	}
 
-	public void setDeadline(Date deadline) {
+	public void setDeadline(LocalDate deadline) {
 		this.deadline = deadline;
 	}
 
@@ -157,11 +157,11 @@ public class JobAdvertisement {
 		this.salaryMax = salaryMax;
 	}
 
-	public Date getPublishedAt() {
+	public LocalDate getPublishedAt() {
 		return publishedAt;
 	}
 
-	public void setPublishedAt(Date publishedAt) {
+	public void setPublishedAt(LocalDate publishedAt) {
 		this.publishedAt = publishedAt;
 	}
 

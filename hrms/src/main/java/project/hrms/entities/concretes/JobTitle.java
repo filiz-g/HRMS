@@ -1,6 +1,6 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -23,14 +23,14 @@ public class JobTitle {
 	        private String jobTitle;
 
 		    @Column(name="created_date")
-	        private Date createdDate;
+	        private LocalDate createdDate;
 	     
 		    @Column(name="is_active")
 	        private boolean isActive;
 		 
 	    public JobTitle() {};
 
-		public JobTitle(int id, String jobTitle, Date createdDate, boolean isActive) {
+		public JobTitle(int id, String jobTitle, LocalDate createdDate, boolean isActive) {
 			super();
 			this.id = id;
 			this.jobTitle = jobTitle;
@@ -54,11 +54,11 @@ public class JobTitle {
 			this.jobTitle = jobTitle;
 		}
 
-		public Date getCreatedDate() {
+		public LocalDate getCreatedDate() {
 			return createdDate;
 		}
 
-		public void setCreatedDate(Date createdDate) {
+		public void setCreatedDate(LocalDate createdDate) {
 			this.createdDate = createdDate;
 		}
 

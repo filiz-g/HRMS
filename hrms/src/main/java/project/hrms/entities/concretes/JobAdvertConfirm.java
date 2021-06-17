@@ -1,6 +1,6 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,7 +24,7 @@ public class JobAdvertConfirm {
 	private boolean isConfirmed;
 	
 	@Column(name = "condirmed_date")
-	private Date confirmedDate;
+	private LocalDate confirmedDate;
 	
 	@OneToOne
 	@JoinColumn(name ="job_advertisement_id")
@@ -36,7 +36,7 @@ public class JobAdvertConfirm {
 
 	public JobAdvertConfirm() {}
 
-	public JobAdvertConfirm(int id, boolean isConfirmed, Date confirmedDate, JobAdvertisement jobAdvertisement,
+	public JobAdvertConfirm(int id, boolean isConfirmed, LocalDate confirmedDate, JobAdvertisement jobAdvertisement,
 			Employee employee) {
 		super();
 		this.id = id;
@@ -62,11 +62,11 @@ public class JobAdvertConfirm {
 		this.isConfirmed = isConfirmed;
 	}
 
-	public Date getConfirmedDate() {
+	public LocalDate getConfirmedDate() {
 		return confirmedDate;
 	}
 
-	public void setConfirmedDate(Date confirmedDate) {
+	public void setConfirmedDate(LocalDate confirmedDate) {
 		this.confirmedDate = confirmedDate;
 	}
 

@@ -2,6 +2,9 @@ package project.hrms.core.verification;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class VerificationManager implements VerificationService{
 
 	@Override

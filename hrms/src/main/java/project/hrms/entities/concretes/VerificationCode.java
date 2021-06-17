@@ -1,6 +1,7 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -19,7 +20,7 @@ public class VerificationCode {
 	private int id;
 	
 	@Column(name="created_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	@Column(name="is_active")
 	private boolean isActive;
@@ -33,7 +34,7 @@ public class VerificationCode {
 	@Column(name="user_id")
 	private int userId;
 
-	public VerificationCode(int id, Date createdDate, boolean isActive, String code, boolean isConfirmed, int userId) {
+	public VerificationCode(int id, LocalDate createdDate, boolean isActive, String code, boolean isConfirmed, int userId) {
 		super();
 		this.id = id;
 		this.createdDate = createdDate;
@@ -51,11 +52,11 @@ public class VerificationCode {
 		this.id = id;
 	}
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 

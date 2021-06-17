@@ -7,7 +7,10 @@ import org.springframework.stereotype.Service;
 
 import project.hrms.business.abstracts.JobTitleService;
 import project.hrms.core.utilities.results.DataResult;
+import project.hrms.core.utilities.results.ErrorResult;
+import project.hrms.core.utilities.results.Result;
 import project.hrms.core.utilities.results.SuccessDataResult;
+import project.hrms.core.utilities.results.SuccessResult;
 import project.hrms.dataAccess.abstracts.JobTitleDao;
 import project.hrms.entities.concretes.JobTitle;
 
@@ -28,4 +31,19 @@ public class JobTitleManager implements JobTitleService {
 				
 	}
 
+
+	@Override
+	public Result add(JobTitle jobTitle) {
+		if(getByJobTitle(jobTitle.getJobTitle()).getData() != null){
+			return new ErrorResult( "İş pozisyonu zaten mevcut.");
+		}
+		this.jobTitleDao.save(jobTitle);
+	    return new SuccessResult("İş Pozisyonu başarılı bir şekilde eklendi.");
+	}
+
+	@Override
+	public DataResult<JobTitle> getByJobTitle(String title) {
+		return new SuccessDataResult<JobTitle>(this.jobTitleDao.findByJobTitle(title));
+
+	}
 }

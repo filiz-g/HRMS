@@ -1,17 +1,19 @@
 package project.hrms.entities.concretes;
 
-import java.sql.Date;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
 @Entity
+@Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="users")
-
 public class User {
 	
 	@Id
@@ -19,8 +21,8 @@ public class User {
     @Column(name="id")
 	private int id;
 	
-	@Column(name="email_adress")
-	private String emailAddress;
+	@Column(name="email")
+	private String email;
 	
 	@Column(name="password")
 	private String password;
@@ -29,16 +31,16 @@ public class User {
 	private boolean isActive;
 	
 	@Column(name="cretaed_date")
-	private Date createdDate;
+	private LocalDate createdDate;
 	
 	
 	public User() {}
 
 
-	public User(int id, String emailAddress, String password, boolean isActive, Date createdDate) {
+	public User(int id, String email, String password, boolean isActive, LocalDate createdDate) {
 		super();
 		this.id = id;
-		this.emailAddress = emailAddress;
+		this.email = email;
 		this.password = password;
 		this.isActive = isActive;
 		this.createdDate = createdDate;
@@ -55,13 +57,13 @@ public class User {
 	}
 
 
-	public String getEmailAddress() {
-		return emailAddress;
+	public String getEmail() {
+		return email;
 	}
 
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 
@@ -85,12 +87,12 @@ public class User {
 	}
 
 
-	public Date getCreatedDate() {
+	public LocalDate getCreatedDate() {
 		return createdDate;
 	}
 
 
-	public void setCreatedDate(Date createdDate) {
+	public void setCreatedDate(LocalDate createdDate) {
 		this.createdDate = createdDate;
 	}
 
