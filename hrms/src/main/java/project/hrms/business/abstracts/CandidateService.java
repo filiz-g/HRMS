@@ -8,11 +8,13 @@ import project.hrms.entities.concretes.Candidate;
 
 public interface CandidateService {
 	
-	DataResult<List<Candidate>> getAll();
 	Result add(Candidate candidate);
-    DataResult<Candidate> getByNationalityId(String nationalityId);
-	DataResult<Candidate> getByEmail(String email);
-	
+	Result update(Candidate candidate);
+	Result delete(int id);
+	DataResult<List<Candidate>> getAll();
+	DataResult<Candidate> getById(int id);	
+	DataResult<Candidate> getByCandidateNationalityId(String nationalityId);
+
 	
 
 }

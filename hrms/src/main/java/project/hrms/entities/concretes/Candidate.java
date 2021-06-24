@@ -1,18 +1,35 @@
 package project.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+
+@Data
+@EqualsAndHashCode(callSuper=false)
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="candidates")
 @PrimaryKeyJoinColumn(name = "user_id")
 public class Candidate extends User {
     
+	@JsonIgnore
+	@Column(name= "is_active")
+	private boolean isActive = true;
+	
 	
 	@Column(name="first_name")
 	private String firstName;
@@ -27,80 +44,15 @@ public class Candidate extends User {
 	private LocalDate dateOfBirth;
 	
 	@Column(name="is_verified")
-	private boolean isVerified;
+	private boolean isVerified=false;
+	
+	@JsonIgnore
+	@Column(name= "created_date", columnDefinition = "Date defult CURRENT_DATE")
+	private LocalDate createdDate = LocalDate.now();
 
 	
-
-	public Candidate(String firstName, String lastName, String nationalityId, LocalDate dateOfBirth,
-			boolean isVerified) {
-		super();
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.nationalityId = nationalityId;
-		this.dateOfBirth = dateOfBirth;
-		this.isVerified = isVerified;
-	}
-
-
-
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-
-
-	public String getLastName() {
-		return lastName;
-	}
-
-
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-
-
-	public String getNationalityId() {
-		return nationalityId;
-	}
-
-
-
-	public void setNationalityId(String nationalityId) {
-		this.nationalityId = nationalityId;
-	}
-
-
-
-	public LocalDate getDateOfBirth() {
-		return dateOfBirth;
-	}
-
-
-
-	public void setDateOfBirth(LocalDate dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
-
-
-
-	public boolean isVerified() {
-		return isVerified;
-	}
-
-
-
-	public void setVerified(boolean isVerified) {
-		this.isVerified = isVerified;
-	}
-
 	
+	
+	
+   
 }

@@ -10,4 +10,6 @@ public interface UserService {
 
 	DataResult<List<User>> getAll();
 	Result add(User user);
+	DataResult<User> getByUserEmail(String email);
+
 }

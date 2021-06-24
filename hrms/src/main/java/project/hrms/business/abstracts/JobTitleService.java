@@ -8,10 +8,11 @@ import project.hrms.entities.concretes.JobTitle;
 
 public interface JobTitleService {
 	
+	Result add(JobTitle jobTitle);
+
 	DataResult<List<JobTitle>> getAll();
 	
 	DataResult<JobTitle> getByJobTitle(String title);
 	
-	Result add(JobTitle jobTitle);
 
 }

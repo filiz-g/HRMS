@@ -10,6 +10,15 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="verification_codes")
 public class VerificationCode {
@@ -19,11 +28,13 @@ public class VerificationCode {
 	@Column(name="id")
 	private int id;
 	
-	@Column(name="created_date")
-	private LocalDate createdDate;
+	@JsonIgnore
+	@Column(name="created_date", columnDefinition = "Date defult CURRENT_DATE")
+	private LocalDate createdDate = LocalDate.now();
 	
+	@JsonIgnore
 	@Column(name="is_active")
-	private boolean isActive;
+	private boolean isActive=true;
 	
 	@Column(name="code")
 	private String code;
@@ -34,63 +45,7 @@ public class VerificationCode {
 	@Column(name="user_id")
 	private int userId;
 
-	public VerificationCode(int id, LocalDate createdDate, boolean isActive, String code, boolean isConfirmed, int userId) {
-		super();
-		this.id = id;
-		this.createdDate = createdDate;
-		this.isActive = isActive;
-		this.code = code;
-		this.isConfirmed = isConfirmed;
-		this.userId = userId;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	public String getCode() {
-		return code;
-	}
-
-	public void setCode(String code) {
-		this.code = code;
-	}
-
-	public boolean isConfirmed() {
-		return isConfirmed;
-	}
-
-	public void setConfirmed(boolean isConfirmed) {
-		this.isConfirmed = isConfirmed;
-	}
-
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
+	
 
 	
 

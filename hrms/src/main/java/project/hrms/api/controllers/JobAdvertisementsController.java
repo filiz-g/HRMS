@@ -3,10 +3,12 @@ package project.hrms.api.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import project.hrms.business.abstracts.JobAdvertisementService;
@@ -16,6 +18,7 @@ import project.hrms.entities.concretes.JobAdvertisement;
 
 @RestController
 @RequestMapping("/api/jobAdvertisement")
+@CrossOrigin
 public class JobAdvertisementsController {
 	
 	@Autowired
@@ -36,21 +39,25 @@ public class JobAdvertisementsController {
 		return this.jobAdvertisementService.getAll();
 	}
 	
-	@GetMapping("/getAllOpenJobAdvertisementList")
-	public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementList(){
-		return this.jobAdvertisementService.getAllOpenJobAdvertisementList();	}
+	
+	
+	@GetMapping("/getAllByEmployerId")
+	public DataResult<List<JobAdvertisement>> getAllByEmployerId(@RequestParam int id){
+		return this.jobAdvertisementService.getAllByEmployerId(id);
+	}
+	
 
-	
-	
-	@GetMapping("/findAllByOrderByPublishedAtDesc")
-    public DataResult<List<JobAdvertisement>> findAllByOrderByPublishedAtDesc(){
-		return this.jobAdvertisementService.findAllByOrderByPublishedAtDesc();
+	@PostMapping("/changeactivestatus")
+	public Result changeIsActiveByEmployee(@RequestParam int id) {
+		return this.jobAdvertisementService.changeIsActiveByEmployee(id);
 	}
-    
-	@GetMapping("/getAllOpenJobAdvertisementByEmployer")
-    public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementByEmployer(int id){
-		return this.jobAdvertisementService.getAllOpenJobAdvertisementByEmployer(id);
+
+	@PostMapping("/changeopenstatus")
+	public Result changeIsOpenByEmployer(@RequestParam int id) {
+		return this.jobAdvertisementService.changeIsOpenByEmployer(id);
 	}
+	
+
 
 	
 

@@ -1,15 +1,28 @@
 package project.hrms.entities.concretes;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@JsonIgnoreProperties({"hibernateLazyIntilazier","handler","jobAdvertisements"})
 @Table(name="job_titles")
 public class JobTitle {
 	
@@ -22,54 +35,19 @@ public class JobTitle {
 		    @Column(name="title")
 	        private String jobTitle;
 
-		    @Column(name="created_date")
-	        private LocalDate createdDate;
+		    @JsonIgnore
+		    @Column(name="created_date" ,columnDefinition = "Date defult CURRENT_DATE")
+	        private LocalDate createdDate = LocalDate.now();
 	     
+		    @JsonIgnore
 		    @Column(name="is_active")
-	        private boolean isActive;
+	        private boolean isActive=true;
+		    
+		    @OneToMany(mappedBy = "jobTitle")
+			private List<JobAdvertisement> jobAdvertisements;
+			
 		 
-	    public JobTitle() {};
-
-		public JobTitle(int id, String jobTitle, LocalDate createdDate, boolean isActive) {
-			super();
-			this.id = id;
-			this.jobTitle = jobTitle;
-			this.createdDate = createdDate;
-			this.isActive = isActive;
-		}
-
-		public int getId() {
-			return id;
-		}
-
-		public void setId(int id) {
-			this.id = id;
-		}
-
-		public String getJobTitle() {
-			return jobTitle;
-		}
-
-		public void setJobTitle(String jobTitle) {
-			this.jobTitle = jobTitle;
-		}
-
-		public LocalDate getCreatedDate() {
-			return createdDate;
-		}
-
-		public void setCreatedDate(LocalDate createdDate) {
-			this.createdDate = createdDate;
-		}
-
-		public boolean isActive() {
-			return isActive;
-		}
-
-		public void setActive(boolean isActive) {
-			this.isActive = isActive;
-		}
-
+	  
 		
 }
 

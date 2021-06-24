@@ -34,6 +34,15 @@ public class UserManager implements UserService{
 	public Result add(User user) {
 		this.userDao.save(user);
 		return new SuccessResult("Kullanıcı başarılı bir şekilde eklendi.");
-	}	}
+	}
+
+	@Override
+	public DataResult<User> getByUserEmail(String email) {
+		return new SuccessDataResult<User>(this.userDao.findUserByEmail(email));
+	}
+	
+	
+}
+
 
 

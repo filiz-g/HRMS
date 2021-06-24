@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import project.hrms.business.abstracts.EmployeeService;
 import project.hrms.core.utilities.results.DataResult;
+import project.hrms.core.utilities.results.Result;
 import project.hrms.core.utilities.results.SuccessDataResult;
+import project.hrms.core.utilities.results.SuccessResult;
 import project.hrms.dataAccess.abstracts.EmployeeDao;
 import project.hrms.entities.concretes.Employee;
 
@@ -22,11 +24,17 @@ public class EmployeeManager implements EmployeeService {
 		this.employeeDao = employeeDao;
 	}
 
-	
+	@Override
+	public Result add(Employee employee) {
+		 this.employeeDao.save(employee);
+	     return new SuccessResult();
+		
+	}
+
 	@Override
 	public DataResult<List<Employee>> getAll() {
-		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(),"Tüm sistem çalışanı listelendi.") ;
-	}
+		return new SuccessDataResult<List<Employee>>(this.employeeDao.findAll(),
+				"Tüm sistem çalışanı listelendi.");
 	}
 
-
+}

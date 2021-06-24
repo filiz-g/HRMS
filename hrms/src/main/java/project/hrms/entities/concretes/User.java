@@ -11,6 +11,15 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Inheritance(strategy=InheritanceType.JOINED)
 @Table(name="users")
@@ -27,74 +36,19 @@ public class User {
 	@Column(name="password")
 	private String password;
 	
+	@JsonIgnore
 	@Column(name="is_active")
-	private boolean isActive;
+	private boolean isActive=true;
 	
-	@Column(name="cretaed_date")
-	private LocalDate createdDate;
+	//???
+	@JsonIgnore
+	@Column(name="created_date" , columnDefinition = "Date defult CURRENT_DATE")
+	private LocalDate createdDate = LocalDate.now();;
 	
 	
-	public User() {}
 
 
-	public User(int id, String email, String password, boolean isActive, LocalDate createdDate) {
-		super();
-		this.id = id;
-		this.email = email;
-		this.password = password;
-		this.isActive = isActive;
-		this.createdDate = createdDate;
-	}
-
-
-	public int getId() {
-		return id;
-	}
-
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-
-	public String getEmail() {
-		return email;
-	}
-
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-
-	public String getPassword() {
-		return password;
-	}
-
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-
-	public boolean isActive() {
-		return isActive;
-	}
-
-
-	public void setActive(boolean isActive) {
-		this.isActive = isActive;
-	}
-
-
-	public LocalDate getCreatedDate() {
-		return createdDate;
-	}
-
-
-	public void setCreatedDate(LocalDate createdDate) {
-		this.createdDate = createdDate;
-	}
+	
 
 	
 	

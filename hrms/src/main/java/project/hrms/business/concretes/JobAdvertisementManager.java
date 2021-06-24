@@ -58,22 +58,44 @@ public class JobAdvertisementManager implements JobAdvertisementService{
 	}
 
 	@Override
-	public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementList() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllOpenJobAdversitementsList());
-
+	public Result update(JobAdvertisement jobAdvertisement) {
+		this.jobAdvertisementDao.save(jobAdvertisement);
+		return new SuccessResult("İş ilanı başarılı bir şekilde güncellendi.");
 	}
+
+	@Override
+	public Result delete(int id) {
+		this.jobAdvertisementDao.deleteById(id);
+		return new SuccessResult("İş ilanı başarılı bir şekilde silindi.");
+	
+	}
+		
+
+	@Override
+	public DataResult<List<JobAdvertisement>> getAllByEmployerId(int employerId) {
+		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllByEmployerId(employerId),
+				"İşveren id ile getirildi");
+	}
+
+	@Override
+	public Result changeIsActiveByEmployee(int jobAdverttisementId) {
+		JobAdvertisement jobAdvertisementIsActiveEmployee= this.jobAdvertisementDao.getById(jobAdverttisementId);
+		jobAdvertisementIsActiveEmployee.setActive(!jobAdvertisementIsActiveEmployee.isActive());
+		this.jobAdvertisementDao.save(jobAdvertisementIsActiveEmployee);
+		return new SuccessResult("İş ilanının sistem çalışanı tarafından aktifliği değiştirildi.");
+	}
+
+	@Override
+	public Result changeIsOpenByEmployer(int jobAdverttisementId) {
+		JobAdvertisement jobAdvertToChangeIsOpen =this.jobAdvertisementDao.getById(jobAdverttisementId);
+		jobAdvertToChangeIsOpen.setOpen(!jobAdvertToChangeIsOpen.isOpen());
+		this.jobAdvertisementDao.save(jobAdvertToChangeIsOpen);
+		return new SuccessResult("İş ilanı iş veren tarafından aktifleştirildi.");
+	}
+
 
 	
+	
 
-	@Override
-	public DataResult<List<JobAdvertisement>> getAllOpenJobAdvertisementByEmployer(int id) {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.getAllOpenJobAdvertisementByEmployer(id));
-
-	}
-
-	@Override
-	public DataResult<List<JobAdvertisement>> findAllByOrderByPublishedAtDesc() {
-		return new SuccessDataResult<List<JobAdvertisement>>(this.jobAdvertisementDao.findAllByOrderByPublishedAtDesc());
-
-}
+	
 }
