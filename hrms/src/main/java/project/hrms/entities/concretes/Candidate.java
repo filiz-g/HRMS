@@ -50,6 +50,35 @@ public class Candidate extends User {
 	@Column(name= "created_date", columnDefinition = "Date defult CURRENT_DATE")
 	private LocalDate createdDate = LocalDate.now();
 
+
+	@JsonIgnore
+	@OneToMany(mappedBy ="candidate")
+	private List<CoverLetter> coverLetters;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<JobExperience> jobExperiences;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<Language> languages;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<Link> links;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<School> schools;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy="candidate")
+	private List<Skill> skills;
+	
+	
+	@JsonIgnore
+	@OneToOne(mappedBy="candidate")
+	private Image image;
 	
 	
 	
